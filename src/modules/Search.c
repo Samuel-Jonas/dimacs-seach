@@ -1,6 +1,6 @@
 #include "Search.h"
 
-struct Stack a_star(struct Graph graph, uint32_t initial, uint32_t end) {
+struct Stack best_first_search(struct Graph graph, uint32_t initial, uint32_t end, enum Heuristic heuristic) {
     struct PriorityQueue queue = create_priority_queue();
     initial--;
     end--;
@@ -16,8 +16,12 @@ struct Stack a_star(struct Graph graph, uint32_t initial, uint32_t end) {
             graph.vertexes[edge.vertex].parent = aux;
             graph.vertexes[edge.vertex].distance = graph.vertexes[aux].distance + edge.distance;
 
-            uint32_t heuristic = calc_euclidean_distance(graph.vertexes[edge.vertex], graph.vertexes[end]);
-            uint32_t cost = graph.vertexes[edge.vertex].distance + heuristic;
+            uint32_t heuristic_cost = calc_heuristic(heuristic,
+                                                     graph.vertexes[edge.vertex].x_coordinate,
+                                                     graph.vertexes[edge.vertex].y_coordinate,
+                                                     graph.vertexes[end].x_coordinate,
+                                                     graph.vertexes[end].y_coordinate);
+            uint32_t cost = graph.vertexes[edge.vertex].distance + heuristic_cost;
 
             insert_into_queue(&queue, edge.vertex, cost);
         }
