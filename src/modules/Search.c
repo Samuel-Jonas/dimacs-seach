@@ -1,9 +1,19 @@
 #include "Search.h"
 
+struct Stack create_result_path(struct Graph graph, uint32_t initial, uint32_t end) {
+    struct Stack stack = create_stack();
+    push_stack(&stack, end);
+
+    while (end != initial) {
+        end = graph.vertexes[end].parent;
+        push_stack(&stack, end);
+    }
+
+    return stack;
+}
+
 struct Stack best_first_search(struct Graph graph, uint32_t initial, uint32_t end, enum Heuristic heuristic) {
     struct PriorityQueue queue = create_priority_queue();
-    initial--;
-    end--;
     uint32_t aux = initial;
 
     while (aux != end) {
@@ -34,13 +44,5 @@ struct Stack best_first_search(struct Graph graph, uint32_t initial, uint32_t en
 
     free_queue(&queue);
 
-    struct Stack stack = create_stack();
-    push_stack(&stack, end);
-
-    while (aux != initial) {
-        aux = graph.vertexes[aux].parent;
-        push_stack(&stack, aux);
-    }
-
-    return stack;
+    return create_result_path(graph, initial, end);
 }
