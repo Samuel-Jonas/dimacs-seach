@@ -15,6 +15,7 @@ struct Edge {
 struct Vertex {
     int32_t x_coordinate;
     int32_t y_coordinate;
+    uint32_t temp_data;
     uint32_t neighbourhood_size;
     struct Edge* neighbourhood;
 };
