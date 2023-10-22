@@ -2,6 +2,8 @@
 #define QUEUE_H
 
 #include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 struct QueueNode {
     uint32_t id;
