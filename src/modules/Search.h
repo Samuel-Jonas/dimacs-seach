@@ -6,7 +6,8 @@
 #include "Graph.h"
 #include "Heuristic.h"
 #include "Queue.h"
+#include "Stack.h"
 
-void a_star(struct Graph graph, uint32_t initial, uint32_t end);
+struct Stack a_star(struct Graph graph, uint32_t initial, uint32_t end);
 
 #endif

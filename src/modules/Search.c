@@ -1,6 +1,6 @@
 #include "Search.h"
 
-void a_star(struct Graph graph, uint32_t initial, uint32_t end) {
+struct Stack a_star(struct Graph graph, uint32_t initial, uint32_t end) {
     struct PriorityQueue queue = create_priority_queue();
     initial--;
     end--;
@@ -27,4 +27,20 @@ void a_star(struct Graph graph, uint32_t initial, uint32_t end) {
     }
 
     free_queue(&queue);
+
+    struct Stack stack = create_stack();
+    push_stack(&stack, end + 1);
+
+    while (aux != initial) {
+        for (uint32_t i = 0; i < graph.vertexes[aux].neighbourhood_size; i++) {
+            struct Edge edge = graph.vertexes[aux].neighbourhood[i];
+
+            if (graph.vertexes[aux].temp_data - edge.distance == graph.vertexes[edge.vertex].temp_data) {
+                push_stack(&stack, edge.vertex + 1);
+                aux = edge.vertex;
+            }
+        }
+    }
+
+    return stack;
 }
