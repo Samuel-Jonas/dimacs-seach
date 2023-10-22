@@ -16,4 +16,8 @@ struct PriorityQueue {
     struct QueueNode* queue;
 };
 
+struct PriorityQueue create_priority_queue();
+void insert_into_queue(struct PriorityQueue* queue, uint32_t id, uint32_t priority);
+struct QueueNode* pop_queue(struct PriorityQueue* queue);
+
 #endif

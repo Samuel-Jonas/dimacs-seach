@@ -28,6 +28,13 @@ void insert_into_queue(struct PriorityQueue* queue, uint32_t id, uint32_t priori
 
     node->next = *aux;
     *aux = node;
-
     queue->size++;
+}
+
+struct QueueNode* pop_queue(struct PriorityQueue* queue) {
+    struct QueueNode* node = queue->queue;
+    queue->queue = queue->queue->next;
+    queue->size--;
+
+    return node;
 }
