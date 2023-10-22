@@ -26,9 +26,10 @@ struct Stack best_first_search(struct Graph graph, uint32_t initial, uint32_t en
             insert_into_queue(&queue, edge.vertex, cost);
         }
 
-        struct QueueNode* node = pop_queue(&queue);
-        aux = node->id;
-        free(node);
+        if (queue.size == 0)
+            return create_stack();
+
+        aux = pop_queue(&queue);
     }
 
     free_queue(&queue);
