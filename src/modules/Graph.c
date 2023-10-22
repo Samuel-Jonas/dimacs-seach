@@ -13,6 +13,8 @@ void read_coordinates_file(FILE* file, struct Graph* graph) {
                &graph->vertexes[i].x_coordinate,
                &graph->vertexes[i].y_coordinate);
 
+        graph->vertexes[i].distance = 0;
+        graph->vertexes[i].parent = 0;
         graph->vertexes[i].neighbourhood_size = 0;
         graph->vertexes[i].neighbourhood = NULL;
     }
