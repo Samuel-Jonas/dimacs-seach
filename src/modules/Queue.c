@@ -9,6 +9,17 @@ struct PriorityQueue create_priority_queue() {
     return queue;
 }
 
+void free_queue(struct PriorityQueue* queue) {
+    struct QueueNode** node = &queue->queue;
+
+    while (*node != NULL) {
+        struct QueueNode* aux = *node;
+        *node = (*node)->next;
+        free(aux);
+        queue->size--;
+    }
+}
+
 struct QueueNode* create_queue_node(uint32_t id, uint32_t priority) {
     struct QueueNode* node = malloc(sizeof(struct QueueNode));
 
