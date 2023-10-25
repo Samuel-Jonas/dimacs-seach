@@ -39,3 +39,67 @@ struct Stack a_star(struct Graph graph, uint32_t initial, uint32_t end) {
 
     return stack;
 }
+
+void bfs(struct Graph graph, uint32_t initial_node, uint32_t final_node) {
+    struct PriorityQueue queue = create_priority_queue();
+    int front = 0, rear = 0;
+
+    graph.visited[initial_node] = true;
+    struct Edge edge = graph.vertexes[initial_node].neighbourhood[rear++];
+
+    //queue[rear++] = initial_node;
+    insert_into_queue(&queue, edge.vertex, 1);
+    
+    while (front < rear) {
+        //int index = queue[front++];
+        struct QueueNode* node = pop_queue(&queue);
+        uint32_t index = node->id;
+        free(node);
+
+        struct QueueNode* aux = graph -> adj_lists[index];
+
+        while (aux != NULL) {
+            int adj_node = aux -> identifier;
+
+            if (adj_node == final_node) {
+                front = rear;
+                break;
+            }
+
+
+            if (!graph -> visited[adj_node]) {
+                graph -> visited[adj_node] = true;
+                queue[rear++] = adj_node;
+            }
+
+            aux = aux -> prox;
+        }
+    }
+}
+
+void dfs(struct Graph* graph, int initial_node, int final_node) {
+    struct Stack stack = create_stack();
+    int top = -1;
+
+    graph -> visited[initial_node] = true;
+    stack[++top] = initial_node;
+
+    while (top != -1) {
+        int node = stack[top--];
+        printf("%d", node);
+
+        struct Node* aux = graph -> adj_lists[node];
+        while (aux != NULL) {
+            int adj_node = aux -> identifier;
+
+            if (!graph -> visited[adj_node]) {
+                graph -> visited[adj_node] = true;
+                stack[++top] = adj_node;
+            }
+
+            aux = aux -> prox;
+        }
+    }
+
+    free(stack);
+}

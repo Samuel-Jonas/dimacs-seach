@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #include "File.h"
 
@@ -24,6 +25,7 @@ struct Vertex {
 struct Graph {
     uint32_t vertexes_size;
     struct Vertex* vertexes;
+    bool* visited;
 };
 
 void read_coordinates_file(FILE* file, struct Graph* graph);
