@@ -29,5 +29,6 @@ struct Graph {
 void read_coordinates_file(FILE* file, struct Graph* graph);
 void read_distances_file(FILE* file, struct Graph* graph);
 struct Graph create_graph(char* coordinates_filepath, char* distances_filepath);
+void clear_graph(struct Graph* graph);
 
 #endif
