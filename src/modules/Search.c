@@ -46,3 +46,61 @@ struct Stack best_first_search(struct Graph graph, uint32_t initial, uint32_t en
 
     return create_result_path(graph, initial, end);
 }
+
+struct Stack depth_first_search(struct Graph graph, uint32_t initial, uint32_t end) {
+    struct Stack stack = create_stack();
+
+    graph.vertexes[initial].distance = 1;
+    push_stack(&stack, initial);
+
+    while (stack.size != 0) {
+        uint32_t aux = pop_stack(&stack);
+
+        if (aux == end)
+            break;
+
+        for (uint32_t i = 0; i < graph.vertexes[aux].neighbourhood_size; i++) {
+            uint32_t v = graph.vertexes[aux].neighbourhood[i].vertex;
+
+            if (graph.vertexes[v].distance == 0) {
+                graph.vertexes[v].parent = aux;
+                graph.vertexes[v].distance = 1;
+
+                push_stack(&stack, v);
+            }
+        }
+    }
+
+    free_stack(&stack);
+
+    return create_result_path(graph, initial, end);
+}
+
+struct Stack breadth_first_search(struct Graph graph, uint32_t initial, uint32_t end) {
+    struct PriorityQueue queue = create_priority_queue();
+
+    graph.vertexes[initial].distance = 1;
+    insert_into_queue(&queue, initial, 0);
+
+    while (queue.size != 0) {
+        uint32_t aux = pop_queue(&queue);
+
+        if (aux == end)
+            break;
+
+        for (uint32_t i = 0; i < graph.vertexes[aux].neighbourhood_size; i++) {
+            uint32_t v = graph.vertexes[aux].neighbourhood[i].vertex;
+
+            if (graph.vertexes[v].distance == 0) {
+                graph.vertexes[v].parent = aux;
+                graph.vertexes[v].distance = 1;
+
+                insert_into_queue(&queue, v, 0);
+            }
+        }
+    }
+
+    free_queue(&queue);
+
+    return create_result_path(graph, initial, end);
+}
