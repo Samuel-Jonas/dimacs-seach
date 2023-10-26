@@ -63,3 +63,10 @@ struct Graph create_graph(char* coordinates_filepath, char* distances_filepath) 
 
     return graph;
 }
+
+void clear_graph(struct Graph* graph) {
+    for (uint32_t i = 0; i < graph->vertexes_size; i++) {
+        graph->vertexes[i].distance = 0;
+        graph->vertexes[i].parent = 0;
+    }
+}
