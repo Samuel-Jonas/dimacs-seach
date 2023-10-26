@@ -36,3 +36,15 @@ void push_stack(struct Stack* stack, uint32_t id) {
     stack->stack = node;
     stack->size++;
 }
+
+uint32_t pop_stack(struct Stack* stack) {
+    uint32_t id = stack->stack->id;
+    struct StackNode* aux = stack->stack;
+
+    stack->stack = stack->stack->next;
+    stack->size--;
+
+    free(aux);
+
+    return id;
+}

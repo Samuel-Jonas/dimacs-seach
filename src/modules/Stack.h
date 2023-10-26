@@ -18,5 +18,6 @@ struct Stack {
 struct Stack create_stack();
 void free_stack(struct Stack* stack);
 void push_stack(struct Stack* stack, uint32_t id);
+uint32_t pop_stack(struct Stack* stack);
 
 #endif
