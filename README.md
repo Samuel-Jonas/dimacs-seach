@@ -1,4 +1,12 @@
-# Dimacs challenge
+# Trabalho de Inteligência Artificial Busca não informada
+
+### Alunos:
+- Jaziel Loureiro
+- Josafá Dieb
+- Samuel Jonas
+
+`Universidade Federal do Ceará - Campus Russas`
+## Dimacs challenge
 
 ![DIMACS](http://www.diag.uniroma1.it/challenge9/images/dimacs_logo.gif)
 
@@ -42,7 +50,78 @@ The agent need to have knowledge to perform the problem and must looks like:
 4. Limited depth first
 5. Interative depth first
 
-# EXECUÇÃO
+# RELATÓRIO
+
+
+
+**Questão 1:** A Heurística Haversine é admissível?
+Não, ela é muito lenta para calcular
+
+**Questão 2:** Se não é admissível, como você faria para torná-la admissível ou com resultados melhores? Ainda seria melhor que a heurística “terra plana”?
+Para deixar ela admissível, teria que ver uma forma de torná-la mais rápida. Mas ainda sim, dificilmente seria melhor q a terra plana, pq ela só eleva dois elementos ao quadrado e depois faz uma raiz quadrada, são poucas operações, e são executadas muito rápido
+
+## Contexto de execução:
+| Título | Descrição |
+|-----|-------|
+| **Amostragem** | Estados Unidos da América|
+| **Estrutura de Dados** | Grafos|
+| **Memória compartilhada** | 1232981872 Bytes |
+
+## Pontos de execução
+| Execução | P1  | P2  |
+|----|----------|----------|
+| 1  | 21283431 | 11725592 |
+| 2  | 14421968 | 17073296 |
+| 3  | 2373091  | 4425274  |
+| 4  | 12971632 | 148141   |
+| 5  | 8914756  | 21174630 |
+| 6  | 13754049 | 22260038 |
+| 7  | 7925357  | 13279025 |
+| 8  | 8350061  | 7430140  |
+| 9  | 18171901 | 14205190 |
+| 10 | 1196745  | 3724983  |
+| 11 | 4071068  | 9833905  |
+| 12 | 7038099  | 7020721  |
+| 13 | 9069228  | 4782645  |
+| 14 | 20102311 | 18748148 |
+| 15 | 8137871  | 21255533 |
+| 16 | 4956933  | 5473955  |
+| 17 | 16811359 | 19378900 |
+| 18 | 22547250 | 3014685  |
+| 19 | 23804173 | 19349116 |
+| 20 | 10940407 | 16549163 |
+| 21 | 16576398 | 747108   |
+| 22 | 14861853 | 554408   |
+| 23 | 14026133 | 7042149  |
+| 24 | 7984547  | 16028268 |
+| 25 | 21247338 | 16958873 |
+| 26 | 3583486  | 9148641  |
+| 27 | 2845430  | 10621584 |
+| 28 | 16169361 | 19692240 |
+| 29 | 15404228 | 12324324 |
+| 30 | 22270622 | 23542098 |
+| 31 | 17410091 | 3280207  |
+| 32 | 12846287 | 18051685 |
+| 33 | 22659106 | 19223771 |
+| 34 | 21066369 | 6346167  |
+| 35 | 14625539 | 15837010 |
+| 36 | 22895329 | 15032172 |
+| 37 | 16584118 | 21587417 |
+| 38 | 23364161 | 14440485 |
+| 39 | 4682218  | 7401360  |
+| 40 | 14298987 | 1982208  |
+| 41 | 8190468  | 17882472 |
+| 42 | 11130848 | 18813479 |
+| 43 | 12334290 | 11130443 |
+| 44 | 22335953 | 11568752 |
+| 45 | 7285002  | 20659227 |
+| 46 | 18941085 | 747745   |
+| 47 | 7769668  | 15617606 |
+| 48 | 2629664  | 14259009 |
+| 49 | 10894030 | 7526267  |
+| 50 | 20605175 | 9349803  |
+
+
 | Números de execuções                       |          50 |
 |--------------------------------------------|------------:|
 | Total - memória usada (Bytes)              | 24336180704 |
@@ -54,6 +133,8 @@ The agent need to have knowledge to perform the problem and must looks like:
 | Média - Nós expandidos (Inteiro)           | 29598022,52 |
 | Média - Fator de Ramificação (Porcentagem) |  4,82319982 |
 | Média - Tempo de execução (Segundos)       | 137,5186415 |
+
+
 
 # Resultados execuções
 
